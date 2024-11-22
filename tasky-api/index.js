@@ -3,15 +3,17 @@ import express from 'express';
 import tasksRouter from './api/tasks';
 import './db';
 import usersRouter from './api/users';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
 const port = process.env.PORT;
-
+app.use(cors());
 // Middleware to parse JSON
 app.use(express.json());
+
 
 // Define the error handler middleware
 const errHandler = (err, req, res, next) => {
